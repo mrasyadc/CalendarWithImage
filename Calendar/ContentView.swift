@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var myAchievements = Achievements.sampleDataset
+    @State private var selectedDate: Date = .init()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            VStack {
+                FSCalendarView(selectedDate: $selectedDate, achievements: $myAchievements)
+                    .frame(height: 500)
+            }
         }
         .padding()
     }
